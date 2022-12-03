@@ -22,3 +22,26 @@ function sort<T>(arr1: T[], arr2: T[]) {
   return resule;
 }
 console.log(sort<number>(arr1, arr2));
+function calculateDaysBetweenDates(begin, end) {
+  const beginDate = new Date(begin);
+  const endDate = new Date(end);
+  const days = (endDate.getTime() - beginDate.getTime()) / (1000 * 3600 * 24);
+  return days;
+}
+function fn(a: number, b: number) {
+  return a + b;
+}
+class Person {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  say() {
+    console.log("hello");
+  }
+  eat() {
+    console.log("eat");
+  }
+}
