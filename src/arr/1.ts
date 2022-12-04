@@ -21,7 +21,7 @@ function sort<T>(arr1: T[], arr2: T[]) {
   }
   return resule;
 }
-console.log(sort<number>(arr1, arr2));
+// console.log(sort<number>(arr1, arr2));
 function calculateDaysBetweenDates(begin, end) {
   const beginDate = new Date(begin);
   const endDate = new Date(end);
@@ -45,3 +45,34 @@ class Person {
     console.log("eat");
   }
 }
+
+/**
+ * ["flower","flow","flight"]
+ * 找出最长公共前缀
+ * 前缀前缀前缀前缀前缀前缀前缀
+ */
+
+function twoCommonPrefix<T extends { length: number }>(
+  str1: T,
+  str2: T
+): string {
+  let length = str1.length > str2.length ? str2.length : str1.length;
+  let str = "";
+  let j = 0;
+  while (j < length) {
+    if (str1[j] === str2[j]) {
+      str += str1[j];
+      j++;
+    } else {
+      break;
+    }
+  }
+  return str;
+}
+function allCommonPrefix(arr): string {
+  return arr.reduce((prev, next) => {
+    return twoCommonPrefix<string>(prev, next);
+  });
+}
+
+console.log(allCommonPrefix(["floweraaaaa", "flow", "flxx"]));
