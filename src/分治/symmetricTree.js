@@ -14,3 +14,16 @@ const symmetricTree = (root) => {
 };
 
 console.log("symmetricTree", symmetricTree(tree));
+
+const sy = (root) => {
+  const check = (left, right) => {
+    if (!left && !right) return true;
+    if (!left || !right) return false;
+    return (
+      left.val === right.val &&
+      check(left.left, right.right) &&
+      check(left.right, right.left)
+    );
+  };
+  return check(root.left, root.right);
+};
