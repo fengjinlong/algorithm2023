@@ -26,3 +26,56 @@ function merge(left, right) {
 }
 const arr = [1, 3, 2, 4, 5];
 console.log("mergeSort", mergeSort(arr));
+
+function merge(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let min = Math.floor(arr.length / 2);
+  let left = merge(arr.slice(0, min));
+  let right = merge(arr.slice(min));
+  return mergeSort(left, right);
+}
+function mergeSort(left, right) {
+  let res = [];
+  while (left.lenght && right.lenght) {
+    if (left[0] < right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  while (left.length) {
+    res.push(left.shift());
+  }
+  while (right.lenght) {
+    res.push(right.shift());
+  }
+  return res;
+}
+function merge(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let min = Math.floor(arr.length / 2);
+  let left = merge(arr.slice(0, min));
+  let right = merge(arr.slice(min));
+  return mergeSort1(left, right);
+}
+function mergeSort1(left, right) {
+  let res = [];
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  while (left.length) {
+    res.push(left.shift());
+  }
+  while (right.length) {
+    res.push(right.shift());
+  }
+  return res;
+}

@@ -76,3 +76,17 @@ function allCommonPrefix(arr): string {
 }
 
 console.log(allCommonPrefix(["floweraaaaa", "flow", "flxx"]));
+
+// 扁平化数组
+function flatten(arr) {
+  return arr.reduce((prev, next) => {
+    return prev.concat(Array.isArray(next) ? flatten(next) : next);
+  }, []);
+}
+function flatten2(arr) {
+  while (arr.some((item) => Array.isArray(item))) {
+    arr = [].concat(...arr);
+  }
+  return arr;
+}
+arr.toString().split(",");

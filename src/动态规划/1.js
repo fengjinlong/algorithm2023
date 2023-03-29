@@ -17,3 +17,26 @@ function rob(nums) {
   return dp[len - 1];
 }
 console.log(rob(nums));
+
+function rob1(nums) {
+  let len = nums.length;
+  const dp = [nums[0], Math.max(nums[0], nums[1])]; // 12 房间只能要1 或 2
+  for (let i = 2; i < len; i++) {
+    /**
+     * 第 i 间房间偷或不偷
+     * 不偷 dp[i-1] 表示不偷第 i 间房间的最大金额
+     * 偷了 就不能偷第 i-1 间房间，dp[i-2] + nums[i] 表示偷了第 i 间房间的最大金额
+     */
+    dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+  }
+  return dp[len - 1];
+}
+
+function rob2(num) {
+  let len = num.length;
+  const dp = [num[0], Math.max(num[0], num[1])];
+  for (let i = 2; i < len; i++) {
+    dp[i] = Math.max(dep[i - 1], dep[i - 2] + num[i]);
+  }
+  return dp[len - 1];
+}

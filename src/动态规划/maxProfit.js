@@ -19,3 +19,29 @@ const maxProfit = (prices) => {
 };
 const prices = [7, 5, 3, 6, 4];
 console.log("maxProfit", maxProfit(prices));
+
+function mp(prices) {
+  let min = prices[0];
+  let max = 0;
+  for (let i = 1; i < prices.length; i++) {
+    if (min < prices[i]) {
+      min = prices[i];
+    } else if (prices[i] - min > max) {
+      max = prices[i] - min;
+    }
+  }
+  return max;
+}
+
+function mp2(pricesArr) {
+  let min = pricesArr[0];
+  let max = 0;
+  for (let i = 1; i <= pricesArr.length; i++) {
+    if (min < pricesArr[i]) {
+      min = pricesArr[i];
+    } else if (pricesArr[i] - min > max) {
+      max = pricesArr[i] - min;
+    }
+  }
+  return max;
+}

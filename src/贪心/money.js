@@ -19,3 +19,28 @@ function money(arr, total) {
   return result;
 }
 console.log(money([10, 5, 2, 1], 23));
+
+function m(arr, total) {
+  let res = [];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let al = arr[i];
+    while (sum + al <= total) {
+      sum += al;
+      res.push(al);
+    }
+  }
+  return res;
+}
+
+function m1(arr, total) {
+  let res = [];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let al = arr[i];
+    while (sum + al <= total) {
+      sum += al;
+      res.push(al);
+    }
+  }
+}

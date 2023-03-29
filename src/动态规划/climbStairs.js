@@ -6,8 +6,23 @@ function climbStairs(n) {
   if (n <= 2) return n;
   return climbStairs(n - 1) + climbStairs(n - 2);
 }
+function c(n) {
+  if (n <= 2) return n;
+  return c(n - 1) + c(n - 2);
+}
 // 动态规划解法
 function climbStairs2(n) {
+  if (n <= 2) return n;
+  let prev = 1;
+  let curr = 2;
+  for (let i = 3; i <= n; i++) {
+    const sum = prev + curr;
+    prev = curr;
+    curr = sum;
+  }
+  return curr;
+}
+function cl3(n) {
   if (n <= 2) return n;
   let prev = 1;
   let curr = 2;
@@ -34,3 +49,19 @@ console.log(climbStairs(5));
 console.log(climbStairs2(5));
 // 8
 // 8
+
+function c(n) {
+  if (n <= 2) return n;
+  return c(n - 1) + c(n - 2);
+}
+function c2(n) {
+  if (n <= 2) return n;
+  let prev = 1;
+  let curr = 2;
+  for (let i = 0; i <= n; i++) {
+    let sum = prev + curr;
+    prev = curr;
+    curr = sum;
+  }
+  return curr;
+}
