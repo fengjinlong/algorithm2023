@@ -26,6 +26,31 @@ const reverseWords = (s: string): string => {
 
   return result.join(" ");
 };
+const reverseWords2 = (s: string): string => {
+  // 去掉头尾空格
+  let left = 0;
+  let right = s.length - 1;
+  let cur = "";
+  let result = [];
+  while (s[left] === " ") {
+    left++;
+  }
+  while (s[right] === " ") {
+    right--;
+  }
+  while (left <= right) {
+    let char = s[left];
+    if (char !== " ") {
+      cur += char;
+    } else if (char === " " && cur !== "") {
+      result.unshift(cur);
+      cur = "";
+    }
+    left++;
+  }
+  result.unshift(cur);
+  return result.join(" ");
+};
 reverseWords("   a good   example ");
 
 /**
