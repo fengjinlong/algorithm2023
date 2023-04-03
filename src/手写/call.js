@@ -1,4 +1,3 @@
-import { s } from "vitest/dist/index-9f5bc072";
 
 Function.prototype.call2 = function (context, ...arg) {
   context = context || {};

@@ -40,3 +40,9 @@ function CI(C, ...arg) {
   C.call(instance, ...arg);
   return instance;
 }
+
+function newf(fn, ...arg) {
+  let obj = Object.create(fn.prototype);
+  let res = fn.apply(obj, arg);
+  return res instanceof Object ? res : obj;
+}

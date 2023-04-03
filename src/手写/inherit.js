@@ -88,3 +88,15 @@ function clone11(p, c) {
   c.prototype.constructor = c;
 }
 clone1(P6, C6);
+
+// 寄生组合 继承
+function Parent(name) {
+  this.name = name;
+}
+Parent.prototype.play = () => {};
+function Child(name) {
+  Parent.call(this);
+  this.name = name;
+}
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.constructor = Child;

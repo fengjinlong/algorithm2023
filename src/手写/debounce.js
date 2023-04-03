@@ -10,7 +10,7 @@ function debounce(fn, delay) {
   };
 }
 
-function de(fn, delay) {
+function debounc(fn, delay) {
   let time = null;
   return function () {
     if (time) {
