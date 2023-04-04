@@ -41,3 +41,17 @@ function q1(arr) {
   });
   return [...left, point, ...right];
 }
+
+function qq(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  let point = arr[arr.length - 1];
+  const left = arr.filter((ele, index) => {
+    return ele <= point && index !== arr.length - 1;
+  });
+  const right = arr.filter((ele) => {
+    return ele > point;
+  });
+  return [...qq(left), point, ...qq(right)];
+}

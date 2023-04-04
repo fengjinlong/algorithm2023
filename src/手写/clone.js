@@ -54,3 +54,17 @@ const deepClone2 = (obj, hash = new WeakMap()) => {
   }
   return cloneObj;
 };
+
+const isObj = (val) => {
+  return (typeof val === "object" || typeof val === "function") && val !== null;
+};
+const deepClone3 = (obj, hash = new WeakMap()) => {
+  if (!isObj(obj)) return obj;
+  if (hash.has(obj)) return hash.get(obj);
+  let target = Array.isArray(obj) ? [] : {};
+  hash.set(obj, target);
+  Reflect.ownKeys(obj).forEach((key) => {
+    target[key] = isObj(obj[key]) ? deepClone3(obj[key], hash) : obj[key];
+  });
+  return target;
+};

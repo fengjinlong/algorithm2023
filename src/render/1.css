@@ -1,0 +1,39 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.content {
+  width: 100%;
+  background: green;
+  height: 200px;
+}
+
+.left,
+.right {
+  height: 200px;
+  width: 200px;
+  background: pink;
+}
+
+.wrap div {
+  float: left;
+}
+
+.wrap {
+  padding: 0 200px;
+  height: 2000px;
+}
+
+.left {
+  margin-left: -100%;
+  position: relative;
+  left: -200px;
+
+}
+
+.right {
+  margin-left: -200px;
+  position: relative;
+  left: 200px;
+}

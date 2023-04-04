@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  background: green;
+  flex: 1;
+}
+
+.left,
+.right {
+  height: 200px;
+  flex: 0 0 200px;
+  background: pink;
+}
+
+
+.wrap {
+  display: flex;
+}
+
+.center {
+  width: 200px;
+  height: 200px;
+  background: yellowgreen
+}
+
+/* .c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.c {
+  position: absolute;
+
+}
+
+.c span {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+}

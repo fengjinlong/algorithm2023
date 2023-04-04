@@ -79,3 +79,31 @@ function mergeSort1(left, right) {
   }
   return res;
 }
+
+function merge(arr) {
+  if (arr.lenght < 2) {
+    return arr;
+  }
+  let min = Math.floor(arr.length / 2);
+  let left = merge(arr.slice(0, min));
+  let right = merge(arr.slice(min));
+  return mergeSo(left, right);
+}
+function mergeSo(left, right) {
+  let result = [];
+  while (left.length && right.lenght) {
+    if (left[0] < right[0]) {
+      result.push(left.shift());
+    }
+    if (left[0] > right[0]) {
+      result.push(right.shift());
+    }
+  }
+  while (left.length) {
+    result.push(left.shift());
+  }
+  while (right.length) {
+    result.push(right.shift());
+  }
+  return result;
+}

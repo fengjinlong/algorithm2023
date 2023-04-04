@@ -55,19 +55,31 @@ function t4(fn, delay) {
     },
   });
 }
-
-function t5(fn,delay){
-  let firstTime = new Date().getTime()
+function tt1(fn, delay) {
+  let firstTime = new Date();
   return new Proxy(fn, {
-    apply(target,ctx,args){
-      let nowTime = new Date().getTime()
-      if(nowTime - firstTime > delay){
-        target(args)
-      } else {
-        return
+    apply(target, ctx, args) {
+      let nowTime = new Date();
+      if (nowTime - firstTime > delay) {
+        target(args);
+        firstTime = new Date();
       }
-    }
-  })
+    },
+  });
+}
+
+function t5(fn, delay) {
+  let firstTime = new Date().getTime();
+  return new Proxy(fn, {
+    apply(target, ctx, args) {
+      let nowTime = new Date().getTime();
+      if (nowTime - firstTime > delay) {
+        target(args);
+      } else {
+        return;
+      }
+    },
+  });
 }
 
 let n = 0;

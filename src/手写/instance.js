@@ -42,3 +42,11 @@ function ins(left, right) {
     __proto__ = __proto__.prototype;
   }
 }
+
+function Ins(left, right) {
+  while (1) {
+    if (left === null) return false;
+    if (left.__proto__ === right.prototype) return true;
+    left = left.__proto__;
+  }
+}
