@@ -28,6 +28,7 @@ class _LazyMan {
       this.next();
     };
     this.queue.push(tesk);
+    // 这里是关键
     setTimeout(() => {
       this.next();
     });

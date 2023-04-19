@@ -30,3 +30,12 @@ Function.prototype.apply4 = (context, args) => {
   delete context[fn];
   return result;
 };
+
+Function.prototype.apply5 = (context, args) => {
+  context = context || {};
+  let fn = Symbol();
+  context[fn] = this;
+  const result = args.length ? context[fn](...args) : context[fn];
+  delete context[fn];
+  return result;
+};

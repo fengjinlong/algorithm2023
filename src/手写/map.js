@@ -38,3 +38,15 @@ Array.prototype.map3 = function (cb) {
   }
   return result;
 };
+Array.prototype.map4 = function (cb) {
+  let arrObj = this;
+  let _this;
+  if (arguments.length > 1) {
+    _this = arguments[1];
+  }
+  let result = [];
+  for (let i = 0; i < arrObj.length; i++) {
+    result.push(cb.call(_this, arrObj[i], i, arrObj));
+  }
+  return result;
+};

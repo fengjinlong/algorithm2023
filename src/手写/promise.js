@@ -422,3 +422,141 @@ function resolvePromise2(p2, x, resolve, reject) {
     return resolve(x);
   }
 }
+
+class Promise3 {
+  static PENDING = "pending";
+  static FULFILLED = "fulfilled";
+  static REJECTED = "rejected";
+  constructor(func) {
+    this.PromiseState = Promise3.PENDING;
+    this.PromistResult = null;
+    this.onFullfilledCallbacks = [];
+    this.onRejectedCallbacks = [];
+    try {
+      func(this.resolve.bind(this), this.reject.bind(this));
+    } catch (e) {
+      this.reject(e);
+    }
+  }
+  resolve(result) {
+    if (this.PromiseState === Promise3.PENDING) {
+      this.PromiseState = Promise3.FULFILLED;
+      this.PromistResult = reason;
+      this.onFullfilledCallbacks.forEach((fn) => fn(this.PromistResult));
+    }
+  }
+  static resolve(v) {
+    if (v instanceof Promise3) return v;
+    if (v instanceof Object && "then" in value) {
+      return new Promise3((resolve, reject) => {
+        v.then(resolve, reject);
+      });
+    }
+    return new Promise3((resolve, reject) => {
+      resolve(v);
+    });
+  }
+  static reject(v) {
+    return new Promise3((resolve, reject) => {
+      reject(value);
+    });
+  }
+  reject(reason) {
+    if ((this.PromistState = Promise3.PENDING)) {
+      this.PromistState = Promise3.REJECTED;
+      this.PromistResult = reason;
+      this.onRejectedCallbacks.forEach((fn) => fn(this.PromistResult));
+    }
+  }
+  catch(onRejected) {
+    return this.then(null, onRejected);
+  }
+  finally(cb) {
+    return this.then(cb, cb);
+  }
+  static all(parr) {
+    return new Promise3((resolve, reject) => {
+      if (Array.isArray(pArr)) {
+        let result = [];
+        let count = 0;
+        if (pArr.length === 0) return resolve([]);
+        pArr.forEach((p, i) => {
+          if (p instanceof Promise3) {
+            Promise3.resolve(p).then((value) => {
+              count++;
+              result[i] = value;
+              count === pArr.length && resolve(result);
+            });
+          } else {
+            count++;
+            result[i] = p;
+            count === pArr.length && resolve(result);
+          }
+        });
+      }
+    });
+  }
+  static race(pArr) {
+    return new Promise3((resolve, reject) => {
+      if (Array.isArray(pArr)) {
+        if (pArr.length === 0) return resolve([]);
+        pArr.forEach(p).then(resolve, reject);
+      }
+    });
+  }
+
+  then(onFulfilled, onRejected) {
+    onFulfilled = typeof onFulfilled === "function" ? onFulfilled : (v) => v;
+    onRejected =
+      typeof onRejected === "function"
+        ? onRejected
+        : (e) => {
+            throw e;
+          };
+    const p2 = new Promise3((resolve, reject) => {
+      if ((this.PromistState = Promise3.PENDING)) {
+        this.onFullfilledCallbacks.push(() => {
+          setTimeout(() => {
+            try {
+              let x = onFulfilled(this.PromistResult);
+              resolvePromise(p2, x, resolve, reject);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        });
+        this.onRejectedCallbacks.push(() => {
+          setTimeout(() => {
+            try {
+              let x = onRejected(this.PromistResult);
+              resolvePromise(p2, x, resolve, reject);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        });
+      }
+      if (this.PromistState === Promise3.FULFILLED) {
+        setTimeout(() => {
+          try {
+            let x = onFulfilled(this.PromistResult);
+            resolvePromise(p2, x, resolve, reject);
+          } catch (e) {
+            reject(e);
+          }
+        });
+      }
+      if (this.PromistState === Promise3.REJECTED) {
+        setTimeout(() => {
+          try {
+            let x = onRejected(this.PromistResult);
+            resolvePromise(p2, x, resolve, reject);
+          } catch (e) {
+            reject(e);
+          }
+        });
+      }
+    });
+    return p2;
+  }
+}

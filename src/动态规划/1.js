@@ -18,7 +18,7 @@ function rob(nums) {
 }
 console.log(rob(nums));
 
-function rob1(nums) {
+function rob11(nums) {
   let len = nums.length;
   const dp = [nums[0], Math.max(nums[0], nums[1])]; // 12 房间只能要1 或 2
   for (let i = 2; i < len; i++) {
@@ -39,4 +39,13 @@ function rob2(num) {
     dp[i] = Math.max(dep[i - 1], dep[i - 2] + num[i]);
   }
   return dp[len - 1];
+}
+
+function rob3(arr) {
+  let len = arr.length;
+  let arrMax = [arr[0], Math.max(arr[0], arr[1])];
+  for (let i = 2; i < len; i++) {
+    arrMax[i] = Math.max(arrMax[i - 1], arrMax[i - 2] + arr[i]);
+  }
+  return arrMax[len - 1];
 }

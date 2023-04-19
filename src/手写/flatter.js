@@ -13,3 +13,14 @@ function f2(arr) {
   }
   return arr;
 }
+
+function f3(arr) {
+  if (!arr.length) return;
+  // return arr.flat(Infinity);
+  // return arr.toString().split(',').map(ele=>+ele);
+  // return arr.join(',').split(',').map(ele=>+ele);
+  while (arr.some((ele) => Array.isArray(ele))) {
+    arr = [].concat(...arr);
+  }
+  return arr;
+}

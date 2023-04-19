@@ -45,3 +45,16 @@ function mp2(pricesArr) {
   }
   return max;
 }
+
+function gupiao(pricesArr) {
+  let min = pricesArr[0];
+  let max = 0;
+  for (let i = 1; i < pricesArr.length; i++) {
+    if (min > pricesArr[i]) {
+      min = pricesArr[i];
+    } else if (pricesArr[i] - min > max) {
+      max = pricesArr[i] - min;
+    }
+  }
+  return max;
+}

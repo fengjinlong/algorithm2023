@@ -30,3 +30,12 @@ function inverTree2(tree) {
   tree.right = left;
   return tree;
 }
+
+function inver(tree) {
+  if (!tree) return null;
+  let left = inver(tree.left);
+  let right = inver(tree.right);
+  tree.left = right;
+  tree.right = left;
+  return tree;
+}

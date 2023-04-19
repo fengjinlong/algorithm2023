@@ -81,6 +81,20 @@ function t5(fn, delay) {
     },
   });
 }
+function t6(fn, delay) {
+  let firstTime = new Date().getTime();
+  return new Proxy(fn, {
+    apply(target, ctx, args) {
+      let nowTime = new Date().getTime();
+      if (nowTime - firstTime > delay) {
+        target(args);
+        firstTime = new Date().getTime();
+      } else {
+        console.log("limit t6");
+      }
+    },
+  });
+}
 
 let n = 0;
 const fun = () => {

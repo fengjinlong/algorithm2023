@@ -46,3 +46,9 @@ function newf(fn, ...arg) {
   let res = fn.apply(obj, arg);
   return res instanceof Object ? res : obj;
 }
+
+function newff(fn, ...arg) {
+  let obj = Object.create(fn.prototype);
+  let res = fn.apply(obj, arg);
+  return res instanceof Object ? res : obj;
+}

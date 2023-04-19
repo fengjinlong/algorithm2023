@@ -50,7 +50,7 @@ console.log(climbStairs2(5));
 // 8
 // 8
 
-function c(n) {
+function c1(n) {
   if (n <= 2) return n;
   return c(n - 1) + c(n - 2);
 }
@@ -64,4 +64,9 @@ function c2(n) {
     curr = sum;
   }
   return curr;
+}
+
+function cc(n) {
+  if (n <= 2) return n;
+  return c(n - 1) + c(n - 2);
 }

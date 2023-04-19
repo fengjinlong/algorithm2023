@@ -100,3 +100,83 @@ function Child(name) {
 }
 Child.prototype = Object.create(Parent.prototype);
 Child.prototype.constructor = Child;
+// 4-14
+function P11() {
+  this.name = "parent";
+}
+function C11() {
+  this.name = "child";
+}
+C11.prototype = new P11();
+
+function P22() {
+  this.name = "parent";
+}
+P22.prototype.getName = function () {
+  return this.name;
+};
+function C22() {
+  P22.call(this);
+  this.name = "child";
+}
+let c22 = new C22();
+
+function P33() {
+  this.name = "parent";
+}
+P33.prototype.getName = function () {
+  return this.name;
+};
+function C33() {
+  P33.call(this);
+  this.name = "child";
+}
+C33.prototype = new P33();
+C33.prototype.constructor = C33;
+let c33 = new C33();
+
+function P44() {
+  this.name = "parent";
+}
+const c44 = Object.create(P44.prototype);
+
+function P55() {
+  this.name = "parent";
+}
+function clone(p) {
+  const c = Object.create(p);
+  c.getName = function () {
+    return this.name;
+  };
+  return c;
+}
+clone(P55.prototype);
+
+function P66() {
+  this.name = "parent";
+}
+P66.prototype.getName = function () {
+  return this.name;
+};
+function C66() {
+  P66.call(this);
+  this.name = "child";
+}
+function clone1(p, c) {
+  c.prototype = Object.create(p.prototype);
+  c.prototype.constructor = c;
+}
+clone1(P66, C66);
+
+function P77() {
+  this.name = "parent";
+}
+P77.prototype.getName = function () {
+  return this.name;
+};
+function C77() {
+  P77.call(this);
+  this.name = "child";
+}
+C77.prototype = Object.create(P77.prototype);
+C77.prototype.constructor = C77;

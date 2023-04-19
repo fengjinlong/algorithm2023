@@ -37,6 +37,7 @@ function m1(arr, total) {
   let res = [];
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
+    if (sum === total) break;
     let al = arr[i];
     while (sum + al <= total) {
       sum += al;

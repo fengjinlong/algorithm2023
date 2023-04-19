@@ -19,3 +19,9 @@ function dep(tree) {
   dep(tree.left);
   dep(tree.right);
 }
+
+function deep(tree) {
+  if (!tree) return null;
+  deep(tree.left);
+  deep(tree.right);
+}

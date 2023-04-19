@@ -17,3 +17,13 @@ const fn2 = cy(f);
 fn2(1);
 fn2(2);
 fn2(3)(2)(3);
+
+const cy1 = (fn, ...args) => {
+  if (fn.length > args.length) {
+    return function (...args2) {
+      return cy1(fn, ...args, ...args2);
+    };
+  } else {
+    return fn(...args);
+  }
+};

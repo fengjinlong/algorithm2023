@@ -107,3 +107,29 @@ function mergeSo(left, right) {
   }
   return result;
 }
+
+function merge1(arr) {
+  if (arr.length < 2) return arr;
+  let middle = Math.floor(arr.length / 2);
+  let left = merge1(arr.slice(0, middle));
+  let right = merge1(arr.slice(middle));
+  return sortArr(left, right);
+}
+
+function sortArr(left, right) {
+  let result = [];
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right[0]);
+    }
+  }
+  if (left.length) {
+    result = [...result, ...left];
+  }
+  if (right.length) {
+    result = [...result, ...right];
+  }
+  return result;
+}

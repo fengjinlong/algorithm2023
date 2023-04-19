@@ -1,4 +1,3 @@
-
 Function.prototype.call2 = function (context, ...arg) {
   context = context || {};
   let fn = Symbol();
@@ -24,10 +23,17 @@ Function.prototype.call3 = function (C, ...arg) {
   return result;
 };
 
-Function.prototype.call3= function(C,...args){
-  let fn = Symbol()
-  C[fn]=this
-  let result = C[fn](...args)
-  delete C[fn]
-  return result
-}
+Function.prototype.call3 = function (C, ...args) {
+  let fn = Symbol();
+  C[fn] = this;
+  let result = C[fn](...args);
+  delete C[fn];
+  return result;
+};
+Function.prototype.call4 = function (C, ...args) {
+  let fn = Symbol();
+  C[fn] = this;
+  let result = C[fn](...args);
+  delete C[fn];
+  return result;
+};

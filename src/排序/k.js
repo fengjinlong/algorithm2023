@@ -18,6 +18,9 @@ function fn(arr, k) {
   }
   let result = [];
   for (let m of map) {
+    // console.log("m[0]", m[0]);
+    // console.log("m[1]", m[1]);
+    console.log("m", m);
     result[m[1]] = m[0];
   }
   result = result.filter((ele) => ele !== undefined).reverse();

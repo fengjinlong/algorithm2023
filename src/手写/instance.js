@@ -50,3 +50,11 @@ function Ins(left, right) {
     left = left.__proto__;
   }
 }
+
+function Inst(left, right) {
+  while (1) {
+    if (left === null) return false;
+    if (left.__proto__ === right.prototype) return true;
+    left = left.__proto__;
+  }
+}

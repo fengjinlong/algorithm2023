@@ -30,3 +30,12 @@ const isSameTree2 = (tree1, tree2) => {
     isSameTree1(tree1.left, tree2.left) && isSameTree1(tree1.right, tree1.right)
   );
 };
+
+const isSameTree3 = (tree1, tree2) => {
+  if (tree1 === null && tree2 === null) return true;
+  if (tree1 === null || tree2 === null) return false;
+  if (tree1.val !== tree2.val) return false;
+  return (
+    isSameTree3(tree1.left, tree2.left) && isSameTree3(tree1.right, tree2.right)
+  );
+};

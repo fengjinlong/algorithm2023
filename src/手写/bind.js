@@ -88,6 +88,33 @@ Function.prototype.bind3 = function(context, ...args1) {
   }
 }
 
+Function.prototype.bind5=function(context, ...args){
+  if(typeof this !== 'function'){
+    throw new Error('error')
+  }
+  context = context || window
+  const fn = this
+  return function(...args2){
+    if(new.target){
+      return new fn(...args,...args2)
+    } else {
+      return fn.apply(context,[...args,...args2])
+    }
+  }
+}
 
+Function.prototype.bind6=function(context,...args){
+  if(typeof this !== 'function'){
+    throw new Error('error')
+  }
+  context = context || window
+  const fn = this
 
-
+  return (...args2)=>{
+    if(new.target){
+      return new fn(...args,...args2)
+    } else {
+      return fn.apply(context,[...args,...args2])
+    }
+  }
+}

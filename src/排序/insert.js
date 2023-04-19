@@ -58,9 +58,37 @@ function shellSort(arr) {
     for (let j = i; j < arr.length; j++) {
       let t = arr[j];
       let k = j;
-      while (k > 0 && arr[k - 1] > t) {
-        arr[k] = arr[k - 1];
-        k--;
+      while (k > 0 && arr[k - i] > t) {
+        arr[k] = arr[k - i];
+        k -= i;
+      }
+      arr[k] = t;
+    }
+  }
+  return arr;
+}
+
+function insert(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let t = arr[i];
+    let k = j;
+    while (k > 0 && arr[k - 1] > arr[k]) {
+      arr[k] = arr[k - 1];
+      k--;
+    }
+    arr[k] = t;
+  }
+  return arr;
+}
+
+function shel(arr) {
+  for (let i = Math.floor(arr.length / 2); i > 0; i = Math.floor(i / 2)) {
+    for (let j = i; j < arr.length; j++) {
+      let t = arr[i];
+      let k = j;
+      while (k > 0 && arr[k - i] > arr[k]) {
+        arr[k] = arr[k - i];
+        k -= i;
       }
       arr[k] = t;
     }

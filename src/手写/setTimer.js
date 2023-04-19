@@ -1,4 +1,5 @@
 function timer1(fn, time) {
+  ``;
   let timer = null;
   function interval() {
     if (timer) {
@@ -12,6 +13,15 @@ function timer1(fn, time) {
   };
 }
 
+function time11(fn, time) {
+  let timer = null;
+  function interval() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = setTimeout(interval, time);
+    }
+  }
+}
 function timer2(fn, time) {
   const t = setInterval(() => {
     clearInterval(t);
