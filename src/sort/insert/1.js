@@ -41,3 +41,16 @@ const insert3 = (arr) => {
   console.log("arr3", arr);
 };
 insert3(arr);
+
+const insert4 = (arr) => {
+  for (let i = 1; i < arr.length; i++) {
+    let c = arr[i];
+    let j = i;
+    while (j > 0 && arr[j - 1] > c) {
+      arr[j] = arr[j - 1];
+      j--;
+    }
+    arr[j] = c;
+  }
+  console.log("arr", arr);
+};

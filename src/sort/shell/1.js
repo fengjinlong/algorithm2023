@@ -35,3 +35,18 @@ function shell2(arr) {
   console.log("shell2", arr);
 }
 shell2(arr);
+
+function shell3(arr) {
+  for (let i = arr.length / 2; i > 0; i = Math.floor(i / 2)) {
+    for (let j = i; j < arr.length; j++) {
+      let current = arr[i];
+      let prevIndex = j;
+      while (prevIndex >= 0 && arr[prevIndex - i] > current) {
+        arr[prevIndex] = arr[prevIndex - i];
+        prevIndex -= i;
+      }
+      arr[prevIndex] = current;
+    }
+  }
+  return arr;
+}

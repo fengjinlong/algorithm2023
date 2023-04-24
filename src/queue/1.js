@@ -10,8 +10,9 @@ const lengthOfLongestSubstring = (s) => {
   for (let i = 0; i < s.length; i++) {
     let index = arr.indexOf(s[i]);
     if (index !== -1) {
-      arr.splice(0, index + 1);
-      arr.push(s[i]);
+      // arr.splice(index, 1);
+      // max--;
+      // arr.push(s[i]);
     } else {
       arr.push(s[i]);
       max = Math.max(max, arr.length);

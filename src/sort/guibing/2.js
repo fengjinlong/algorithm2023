@@ -45,3 +45,25 @@ function merge2(left, right) {
   if (right.length) res = res.concat(right);
   return res;
 }
+
+// 分解数组
+function mergeSort3(arr) {
+  if (arr.length < 2) return arr;
+  let mid = Math.floor(arr.length / 2);
+  let left = mergeSort3(arr.slice(0, mid));
+  let right = mergeSort3(arr.slice(mid));
+  return merge3(left, right);
+}
+function merge3(left, right) {
+  let res = [];
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  if (left.length) res = res.concat(left);
+  if (right.length) res = res.concat(right);
+  return res;
+}

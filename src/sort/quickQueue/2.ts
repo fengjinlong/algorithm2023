@@ -24,3 +24,11 @@ function quickQueue2(arr) {
 console.time("quickQueue");
 quickQueue2(arr);
 console.timeEnd("quickQueue");
+
+const q = (arr) => {
+  if (arr.length < 2) return arr;
+  const p = arr.length - 1;
+  const left = arr.filter((ele, index) => ele < arr[p] && index < p);
+  const right = arr.filter((ele) => ele > arr[p]);
+  return [...q(left), arr[p], ...q(right)];
+};

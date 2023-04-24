@@ -10,7 +10,11 @@ const fun1 = (root) => {
     if (root) {
       console.log(root.val);
       preOrder(root.left);
+      // console.log(root.val);
       preOrder(root.right);
+      // console.log(root.val);
+    } else {
+      return;
     }
   };
 };
