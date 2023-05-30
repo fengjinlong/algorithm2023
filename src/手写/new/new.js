@@ -58,3 +58,9 @@ function newfff(fn, ...args) {
   let res = fn.apply(obj, args);
   return res instanceof Object ? res : obj;
 }
+
+function new23(constructor, ...args) {
+  let context = Object.create(constructor.prototype);
+  let result = constructor.apply(context, args);
+  return result instanceof Object ? result : context;
+}

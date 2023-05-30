@@ -35,3 +35,11 @@ const cy2 = (fn, ...args) => {
     return fn(...args);
   }
 };
+
+const cy3 = (fn, ...args) => {
+  if (fn.length > args.length) {
+    return (...args2) => cy3(fn, ...args, ...args2);
+  } else {
+    return fn(...args);
+  }
+};

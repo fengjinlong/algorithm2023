@@ -75,12 +75,12 @@ class S {
     let fn = this.queue.shift()();
     fn.then(() => {
       this.runCounts--;
-      this.run();
+      // this.run();
     });
   }
 }
 
-const scheduler = new S(3);
+const scheduler = new S(4);
 const addTask = (time, order) => {
   scheduler.add(time, order);
 };

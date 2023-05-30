@@ -93,3 +93,18 @@ function ree(head) {
   }
   return next;
 }
+
+function ree(head) {
+  // body...
+  let prev = null;
+  let current = head;
+  let next = null;
+  while (current) {
+    next = current.next;
+    // 断指针
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+}

@@ -1,7 +1,7 @@
 const arr1 = [1, 3, 5, 7, 9];
 const arr2 = [2, 4, 6, 8];
 
-function sort<T>(arr1: T[], arr2: T[]) {
+function sort11(arr1, arr2) {
   let resule = [];
   while (arr1.length && arr2.length) {
     let a = arr1.shift();

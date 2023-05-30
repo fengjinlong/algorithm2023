@@ -25,6 +25,17 @@ function insertSortaa(arr) {
   }
   return arr;
 }
+function inserts(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let temp = arr[i];
+    let j = i;
+    while (j > 0 && arr[j - 1] > temp) {
+      arr[j] = arr[j - 1];
+      j--;
+    }
+    arr[j] = temp;
+  }
+}
 
 function insertSort1(arr) {
   for (let i = 1; i < arr.length; i++) {
@@ -121,3 +132,31 @@ function shell(arr) {
   }
   return arr;
 }
+
+function inf(arr) {
+  // 0 ok
+  for (let i = 1; i < arr.length; i++) {
+    let t = arr[i];
+    let j = i;
+    while (j > 0 && arr[j - 1] > t) {
+      arr[j] = arr[j - 1];
+      j--;
+    }
+    arr[j] = t;
+  }
+}
+function she(arr) {
+  for (let i = Math.floor(arr.length / 2); i > 0; i = Math.floor(i / 2)) {
+    for (let j = i; j < arr.length; j++) {
+      let t = arr[j];
+      let k = j;
+      while (k > i && arr[k - i] > t) {
+        arr[k] = arr[k - i];
+        k -= i;
+      }
+      arr[k] = t;
+    }
+  }
+  console.log("arr", arr);
+}
+she([1, 3, 2, 4, 5]);

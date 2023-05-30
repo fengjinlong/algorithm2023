@@ -2,7 +2,7 @@ const arr = [5, 1, 1, 1, 1, 2, 3, 2, 3, 3, 5, 5, 5, 5, 9, 9, 9, 9, 9, 9, 9];
 let k = 1;
 
 /**
- * @description: 前 K 个高频元素
+ * @description: 前 K 个 **高频** 元素
  * @param {*} arr
  * @param {*} k
  * @return {*}
@@ -23,6 +23,10 @@ function fn(arr, k) {
     console.log("m", m);
     result[m[1]] = m[0];
   }
+  console.log(
+    "result",
+    result.filter((ele) => ele !== undefined)
+  );
   result = result.filter((ele) => ele !== undefined).reverse();
 
   console.log("map", map);

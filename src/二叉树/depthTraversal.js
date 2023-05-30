@@ -1,4 +1,5 @@
 import { createTree } from "./tree.js";
+
 // 深度遍历
 function dep(tree) {
   if (!tree) return null;
@@ -14,7 +15,7 @@ const t1 = createTree(arr);
 console.log("t1", t1);
 dep(t1);
 
-function dep(tree) {
+function dep1(tree) {
   if (!tree) return null;
   dep(tree.left);
   dep(tree.right);

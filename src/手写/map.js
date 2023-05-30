@@ -62,3 +62,30 @@ Array.prototype.map5 = function (cb) {
   }
   return result;
 };
+
+// arr.map(fn)
+Array.prototype.map6 = function (cb) {
+  let arrobj = this;
+  let _this;
+  if (arguments.length > 1) {
+    _this = arguments[1];
+  }
+  let result = [];
+  for (let i = 0; i < arrobj.length; i++) {
+    result.push(cb.call(_this, arrobj[i], i, arrobj));
+  }
+  return result;
+};
+
+Array.prototype.map7 = function (cb) {
+  let arrobj = this;
+  let _this;
+  if (arguments.length > 1) {
+    _this = arguments[1];
+  }
+  let result = [];
+  for (let i = 0; i < arrobj.length; i++) {
+    result.push(cb.call(_this, arrobj[i], i, arrobj));
+  }
+  return result;
+};

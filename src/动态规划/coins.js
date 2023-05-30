@@ -57,4 +57,44 @@ function fn(coins, amount) {
   }
   return sum === amount ? result : [];
 }
+function fn(coins, amount) {
+  if (amount < 1) return -1;
+  let result = [];
+  let sum = 0;
+  let i = 0;
+  while (sum < amount && i < coins.length) {
+    sum += coins[i];
+    if (sum < amount) {
+      result.push(coins[i]);
+    } else if (sum > amount) {
+      sum -= coins[i];
+      i++;
+    } else {
+      result.push(coins[i]);
+      break;
+    }
+  }
+  // 凑不齐
+  if (i === length) return -1;
+}
 console.log("fn(coins, amount)", fn(coins, amount));
+
+function fn2(coins, amount) {
+  if (amont < 1) return -1;
+  let result = [];
+  let sum = 0;
+  let i = 0;
+  while (sum < amount && i < coins.length) {
+    sum += coins[i];
+    if (sum < amount) {
+      result.push(coins[i]);
+    } else if (sum > amount) {
+      sum -= coins[i];
+      i++;
+    } else {
+      result.push(coins[i]);
+      break;
+    }
+  }
+  return sum === amount ? result : -1;
+}

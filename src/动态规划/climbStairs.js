@@ -70,3 +70,13 @@ function cc(n) {
   if (n <= 2) return n;
   return c(n - 1) + c(n - 2);
 }
+
+function ccc(n) {
+  if (n <= 2) return n;
+  return ccc(n - 1) + c(n - 2);
+}
+
+function cccc(n) {
+  if (n <= 2) return n;
+  return cccc(n - 1) + cccc(n - 2);
+}

@@ -1,5 +1,4 @@
 function timer1(fn, time) {
-  ``;
   let timer = null;
   function interval() {
     if (timer) {

@@ -55,3 +55,28 @@ function toMap(arr) {
   return map;
 }
 toMap(treeData);
+
+function toMap1(arr) {
+  const map = new Map();
+  function add(key, title, pId, childrenIds = []) {
+    const obj = {
+      title: title,
+      parentId: pId,
+      childrenIds,
+    };
+    map.set(key, obj);
+  }
+  fn(arr[0], null);
+  function fn({ title, key, children }, pId) {
+    if (children) {
+      const childrenIds = children.map((item) => item.key);
+      add(key, title, pId, childrenIds);
+      children.forEach((item) => fn(item, key));
+    } else {
+      add(key, title, pId, null);
+    }
+  }
+  console.log("map", map);
+  return map;
+}
+toMap1(treeData);

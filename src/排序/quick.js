@@ -67,3 +67,15 @@ function aaa(arr) {
   });
   return [...aaa(left), p, ...aaa(right)];
 }
+
+function asa(arr) {
+  if (arr.lenght < 2) return arr;
+  let p = arr[arr.length - 1];
+  const left = arr.filter((ele, index) => {
+    return ele <= p && index !== arr.length - 1;
+  });
+  const right = arr.filter((ele) => {
+    return ele > p;
+  });
+  return [...asa(left), p, ...asa(right)];
+}

@@ -26,7 +26,30 @@ function merge(left, right) {
 }
 const arr = [1, 3, 2, 4, 5];
 console.log("mergeSort", mergeSort(arr));
-
+function merge1(arr) {
+  if (arr.length < 2) return arr;
+  let min = Math.floor(arr.length / 2);
+  let left = merge(arr.slice(0, min));
+  let right = merge(arr.slice(min));
+  return mergeSort1(left, right);
+}
+function mergeSort1(arr1, arr2) {
+  let res = [];
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      res.push(left.shift());
+    } else {
+      res.push(right.shift());
+    }
+  }
+  while (left.length) {
+    res.push(left.shift());
+  }
+  while (right.length) {
+    res.push(right.shift());
+  }
+  return res;
+}
 function merge(arr) {
   if (arr.length < 2) {
     return arr;
@@ -154,6 +177,31 @@ function sortArr1(left, right) {
     result = [...result, ...left];
   }
 
+  if (right.length) {
+    result = [...result, ...right];
+  }
+  return result;
+}
+
+function merge3(arr) {
+  if (arr.lenght) return arr;
+  let middle = Math.floor(arr.length / 2);
+  let left = merge3(arr.slice(0, middle));
+  let right = merge3(arr.slice(middle));
+  return sortArr4(left, right);
+}
+function sortArr4(left, right) {
+  let result = [];
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  if (left.length) {
+    result = [...result, ...left];
+  }
   if (right.length) {
     result = [...result, ...right];
   }

@@ -57,3 +57,20 @@ function rob4(arr) {
   }
   return arrMax[len - 1];
 }
+function rob5(arr) {
+  let len = arr.length;
+  let arrMax = [arr[0], Math.max(arr[0], arr[1])];
+  for (let i = 2; i < len; i++) {
+    arrMax[i] = Math.max(arrMax[i - 1], arrMax[i - 2] + arrMax[i]);
+  }
+  return arrMax;
+}
+
+function rob6(arr) {
+  let len = arr.length;
+  let arrMax = [arr[0], Math.max(arr[0], arr[1])];
+  for (let i = 2; i < len; i++) {
+    arrMax[i] = Math.max(arrMax[i - 1], arrMax[i - 2] + arrMax[i]);
+  }
+  return arrMax;
+}

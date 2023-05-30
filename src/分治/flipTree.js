@@ -11,6 +11,14 @@ const flipTree = (root) => {
   root.right = left;
   return root;
 };
+const f = (root) => {
+  if (!root) return null;
+  const left = f(root.left);
+  const right = f(root.right);
+  root.left = right;
+  root.right = left;
+  return root;
+};
 function fliptree2(tree) {
   if (!tree) return null;
   const left = fliptree2(tree.left);

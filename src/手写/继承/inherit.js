@@ -93,7 +93,6 @@ clone1(P6, C6);
 function Parent(name) {
   this.name = name;
 }
-Parent.prototype.play = () => {};
 function Child(name) {
   Parent.call(this);
   this.name = name;

@@ -21,7 +21,12 @@ const isSameTree1 = (tree1, tree2) => {
     isSameTree1(tree1.left, tree2.left) && isSameTree1(tree1.right, tree2.right)
   );
 };
-
+const isSameTree11 = (t1, t2) => {
+  if (t1 === null && t2 === null) return true;
+  if (t1 === null || t2 === null) return false;
+  if (t1.val !== t2.val) return false;
+  return isSameTree11(t1.left, t2.left) && isSameTree11(t1.right, t2.right);
+};
 const isSameTree2 = (tree1, tree2) => {
   if (tree1 === null && tree2 === null) return true;
   if (tree1 === null || tree2 === null) return false;

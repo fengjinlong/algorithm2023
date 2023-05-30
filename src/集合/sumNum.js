@@ -28,6 +28,18 @@ function sum1(arr, target) {
   return res;
 }
 
+function sum22(arr, target) {
+  let res = [];
+  const map = new Map();
+  for (var i = arr.length - 1; i >= 0; i--) {
+    let num = target - arr[i];
+    if (map.has(num)) {
+      res.push([num, arr[i]]);
+    } else {
+      map.set(arr[i], i);
+    }
+  }
+}
 function sum2(arr, target) {
   let res = [];
   const map = new Map();
