@@ -44,3 +44,11 @@ Function.prototype.call5 = function (C, ...args) {
   delete C[fn];
   return result;
 };
+
+Function.prototype.call6 = function (C, ...args) {
+  let fn = Symbol();
+  C[fn] = this;
+  let result = C[fn](...args);
+  delete C[fn];
+  return result;
+};

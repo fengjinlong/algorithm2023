@@ -16,3 +16,10 @@ Promise.resolve().then(function () {
 });
 console.log("end");
 //start=>end=>promise3=>timer1=>timer2=>promise1=>promise2 node11 之前
+// start
+// end
+// promise3
+// timer1
+// promise1
+// timer2
+// promise2

@@ -40,3 +40,11 @@ const cf = function (fns) {
     };
   });
 };
+
+const cf1 = function (fns) {
+  return fns.reduce((a, b) => {
+    return (...args) => {
+      return a(b(...args));
+    };
+  });
+};
