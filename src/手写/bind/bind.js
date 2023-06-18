@@ -132,3 +132,18 @@ Function.prototype.bind7 = function(c,...args){
     }
   }
 }
+Function.prototype.bind8 = function(obj, ...args) {
+  if(typeof this !== 'function'){
+    throw new Error('error')
+  }
+  obj = obj || window
+  const fn = this
+  return (...args2)=>{
+    if(new.target){
+      return new fn(...args,...args2)
+    }else {
+      return fn.apply(obj, [...args,...args2])
+    }
+  }
+}
+// const fun = fn.bind(obj, args)

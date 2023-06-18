@@ -13,3 +13,15 @@ function quickQueue(arr: number[]): number[] {
 console.log(quickQueue(arr));
 // https://juejin.cn/post/6844903938290876430
 export {};
+
+function qq(arr) {
+  if (arr.length < 2) return [];
+  let point = arr[arr.length - 1];
+  const leftArr = arr.filter((ele, index) => {
+    if (ele <= point && index < arr.length - 1) {
+      return ele;
+    }
+  });
+  const rightArr = arr.filter((ele) => ele > point);
+  return [...qq(leftArr), point, ...qq(rightArr)];
+}

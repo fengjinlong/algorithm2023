@@ -20,7 +20,7 @@ function fun(obj) {
 
   return resule;
 }
-console.log("fun(obj)", fun(obj));
+// console.log("fun(obj)", fun(obj));
 
 function ff(obj) {
   let resule = {};
@@ -36,3 +36,25 @@ function ff(obj) {
   }
   return resule;
 }
+
+const obj1 = {
+  a: 1,
+  b: [1, 2, { c: true }],
+  c: { e: 2, f: 3 },
+  g: null,
+};
+function fff(obj) {
+  let result = {};
+  bp(obj, "");
+  function bp(o, key) {
+    for (let k in o) {
+      if (typeof o[k] === "object") {
+        bp(o[k], key + k + ".");
+      } else {
+        result[key + k] = o[k];
+      }
+    }
+  }
+  console.log("result", result);
+}
+fff(obj1);

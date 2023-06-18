@@ -50,3 +50,23 @@ function debs(fn, delay) {
     }, delay);
   };
 }
+
+function debss(fn, delay) {
+  let timer = null;
+  return function () {
+    if (timer) return;
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, delay);
+  };
+}
+
+function deb(fn, delay) {
+  let timer = null;
+  return function (arguments) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, [...arguments]);
+    }, delay);
+  };
+}

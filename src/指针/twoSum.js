@@ -29,3 +29,21 @@ function twoSumUnsortedArray(arr, target) {
   }
   return [];
 }
+
+function twoSumUnsortedArray1(arr, target) {
+  const map = new Map();
+  let a = [];
+  for (let i = 0; i < arr.length; i++) {
+    let val = target - arr[i];
+    if (map.get(val)) {
+      a = [map.get(val), val];
+    } else {
+      map.set(arr[i], i);
+    }
+  }
+  return a;
+}
+console.log(
+  "twoSumUnsortedArray1([1,2,3,4], 6)",
+  twoSumUnsortedArray1([1, 2, 3, 4], 5)
+);

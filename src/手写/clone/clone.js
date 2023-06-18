@@ -93,3 +93,35 @@ const adc = (obj, hash = new WeakMap()) => {
   });
   return target;
 };
+
+const isObj3 = (obj) => {
+  return (typeof obj === "object" || typeof obj === "function") && obj !== null;
+};
+const cloneObj1 = (obj, hash = new WeakMap()) => {
+  if (hash.get(obj)) {
+    return hash.get(obj);
+  }
+  if (!isObj3(o)) {
+    return obj;
+  }
+  let target = Array.isArray(obj) ? [] : {};
+  hash.set(obj, target);
+  Reflect.ownKeys(obj).forEach((key) => {
+    target[key] = isObj3(obj[key]) ? cloneObj1(obj[key]) : obj[key];
+  });
+  return target;
+};
+
+const isObj4 = (obj) => {
+  return (typeof obj === "object" || typeof obj === "function") && obj !== null;
+};
+const cl = (obj, hash = new WeakMap()) => {
+  if (hash.has(obj)) return hash.get(obj);
+  if (!isObj4(obj)) return obj;
+  let target = Array.isArray(obj) ? [] : {};
+  hash.set(obj, target);
+  Reflect.ownKeys(obj).forEach((key) => {
+    target[key] = isObj4(obj[key]) ? cl(obj[key]) : obj[key];
+  });
+  return target;
+};

@@ -52,3 +52,20 @@ Function.prototype.call6 = function (C, ...args) {
   delete C[fn];
   return result;
 };
+fn.call(obj, args);
+Function.prototype.call7 = function (C, ...args) {
+  let fn = Symbol();
+  C[fn] = this;
+  let r = C[fn](...args);
+  delete C[fn];
+  return r;
+};
+
+Function.prototype.ca = function (Obj, ...arg) {
+  let fn = Symbol();
+  Obj[fn] = this;
+  let r = Obj[fn](...arg);
+  delete Obj[fn];
+  return r;
+};
+// fn.call(obj, 1)

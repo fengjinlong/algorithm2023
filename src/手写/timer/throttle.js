@@ -93,6 +93,20 @@ function t16(fn, delay) {
     },
   });
 }
+function tt11(fn, delay) {
+  let firstTime = new Date();
+  return new Proxy(fn, {
+    apply(target, ctx, args) {
+      let nowTime = new Date();
+      if (nowTime - firstTime > delay) {
+        target(args);
+        firstTime = new Date();
+      } else {
+        console.log("tt11 限流");
+      }
+    },
+  });
+}
 function t6(fn, delay) {
   let firstTime = new Date().getTime();
   return new Proxy(fn, {
@@ -107,17 +121,30 @@ function t6(fn, delay) {
     },
   });
 }
+function t7(fn, delay) {
+  let ft = new Date();
+  return new Proxy(fn, {
+    apply(target, ctx, args) {
+      let nt = new Date();
+      if (nt - ft > delay) {
+        target(args);
+        ft = new Date();
+      } else {
+      }
+    },
+  });
+}
 
 let n = 0;
-const fun = () => {
+const fun = (m) => {
   n++;
-  console.log("节流执行 ok");
+  console.log("节流执行 ok", m);
 };
-const targetFun = t3(fun, 1500);
+const targetFun = tt11(fun, 2000);
 
 let timer = setInterval(() => {
-  if (n > 3) {
+  if (n > 2) {
     clearInterval(timer);
   }
-  targetFun();
+  targetFun(888);
 }, 500);

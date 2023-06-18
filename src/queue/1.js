@@ -7,23 +7,25 @@
 const lengthOfLongestSubstring = (s) => {
   let max = 0;
   let arr = [];
+  let arr2 = [];
   for (let i = 0; i < s.length; i++) {
     let index = arr.indexOf(s[i]);
     if (index !== -1) {
-      // arr.splice(index, 1);
-      // max--;
-      // arr.push(s[i]);
+      arr2.push(arr.length);
+      let index = arr.indexOf(s[i]);
+      arr.push(s[i]);
+      arr.splice(0, index + 1);
     } else {
       arr.push(s[i]);
-      max = Math.max(max, arr.length);
     }
   }
   console.log("arr", arr);
-  console.log("max: ", max);
+  console.log("max: ", Math.max(...arr2));
 
   return max;
 };
-lengthOfLongestSubstring("abceb");
+lengthOfLongestSubstring("abceaecbfb"); // 5
+lengthOfLongestSubstring("abcabcbb"); // 3
 const getMaxArr = (arr, k) => {
   let reasult = [];
   let i = 0;
@@ -35,4 +37,4 @@ const getMaxArr = (arr, k) => {
   console.log("reasult", reasult);
   return reasult;
 };
-getMaxArr([1, 3, -1, -3, 5, 3, 6, 7], 3);
+// getMaxArr([1, 3, -1, -3, 5, 3, 6, 7], 3);

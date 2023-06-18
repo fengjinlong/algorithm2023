@@ -49,3 +49,36 @@ class C7 extends P7 {
 }
 let c7 = new C7();
 // 红宝书 P 238
+
+function P1() {}
+function C1() {}
+C1.prototype = new P1();
+
+function P2() {}
+function C2() {
+  P2.call(this);
+}
+
+function P3() {}
+function C3() {
+  P3.call(this);
+}
+C3.prototype = new P3();
+C3.prototype.constructor = C3;
+
+function P4() {}
+const c41 = Object.create(P4.prototype);
+
+function P5() {}
+function clone(p) {
+  const c = Object.create(p);
+  c.say = function () {};
+  return c;
+}
+const c51 = clone(P5.prototype);
+
+function inherit(Sub, Par) {
+  const prototype = Object.create(Par.prototype);
+  prototype.constructor = Sub;
+  Sub.prototype = prototype;
+}

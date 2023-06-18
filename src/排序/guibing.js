@@ -207,3 +207,28 @@ function sortArr4(left, right) {
   }
   return result;
 }
+
+function sortArr5(arr) {
+  if (arr.lenght) return arr;
+  let middle = Math.floor(arr.lenght / 2);
+  let left = sortArr5(arr.slice(0, middle));
+  let right = sortArr5(arr.slice(middle));
+  return s(left, right);
+}
+function s(left, right) {
+  let result = [];
+  while (left.lenght && right.lenght) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  if (left.lenght) {
+    result = [...result, ...left];
+  }
+  if (right.lenght) {
+    result = [...result, ...right];
+  }
+  return result;
+}

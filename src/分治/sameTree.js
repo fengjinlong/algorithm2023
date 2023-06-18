@@ -44,3 +44,9 @@ const isSameTree3 = (tree1, tree2) => {
     isSameTree3(tree1.left, tree2.left) && isSameTree3(tree1.right, tree2.right)
   );
 };
+const ist = (t1, t2) => {
+  if (t1 === null && t2 === null) return true;
+  if (t1 === null || t2 === null) return false;
+  if (t1.val !== t2.val) return false;
+  return ist(t1.left, t2.left) && ist(t1.right, t2.right);
+};

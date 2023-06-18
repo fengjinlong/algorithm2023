@@ -31,14 +31,38 @@ function getc(coins, amount) {
   if (sum !== amount) return [];
   return result;
 }
+function getcc(coins, amount) {
+  if (amount < 1) return -1;
+  let result = [];
+  let sum = 0;
+
+  let i = 0;
+  while (sum < amount && i < coins.length) {
+    if (sum < amount) {
+      sum += coins[i];
+      if (sum > amount) {
+        sum -= coins[i];
+        i++;
+      } else {
+        result.push(coins[i]);
+      }
+    } else if (sum === amount) {
+      break;
+    } else {
+      i++;
+    }
+  }
+  return result;
+}
 
 const coins = [5, 2, 1];
 const amount = 11;
 const coins1 = [2];
 const amount1 = 3;
-// console.log(getc(coins, amount));
+console.log(getc(coins, amount));
+console.log(getcc(coins, amount));
 
-function fn(coins, amount) {
+function fn1(coins, amount) {
   if (amount < 1) return -1;
   let result = [];
   let sum = 0;
@@ -77,24 +101,4 @@ function fn(coins, amount) {
   // 凑不齐
   if (i === length) return -1;
 }
-console.log("fn(coins, amount)", fn(coins, amount));
-
-function fn2(coins, amount) {
-  if (amont < 1) return -1;
-  let result = [];
-  let sum = 0;
-  let i = 0;
-  while (sum < amount && i < coins.length) {
-    sum += coins[i];
-    if (sum < amount) {
-      result.push(coins[i]);
-    } else if (sum > amount) {
-      sum -= coins[i];
-      i++;
-    } else {
-      result.push(coins[i]);
-      break;
-    }
-  }
-  return sum === amount ? result : -1;
-}
+// console.log("fn(coins, amount)", fn(coins, amount));

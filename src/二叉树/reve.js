@@ -56,3 +56,11 @@ function inv(tree) {
   tree.right = left;
   return tree;
 }
+
+function inv(tree) {
+  if (!tree) return null;
+  let left = inv(tree.left);
+  let right = inv(tree.right);
+  tree.left = right;
+  tree.right = left;
+}

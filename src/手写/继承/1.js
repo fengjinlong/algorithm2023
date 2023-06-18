@@ -37,3 +37,41 @@ function clone(p) {
 }
 const c5 = clone(P5.prototype);
 // 6 寄生组合式继承
+
+function P11() {}
+function C11() {}
+C11.prototype = new P11();
+
+function P2() {}
+function C2() {
+  P2.call(this);
+}
+
+function P33() {}
+function C33() {
+  P33.call(this);
+}
+C33.prototype = new P33();
+C33.prototype.constructor = C33;
+
+// 原型继承
+function P44() {}
+const c4 = Object.create(P44.prototype);
+
+// 寄生
+function P55() {}
+function clone(prototype) {
+  const c = Object.create(prototype);
+  c.fn = () => {};
+  return c;
+}
+const cc = clone(P55.prototype);
+// 寄生组合式
+function inherit(P, C) {
+  const prototype = Object.create(P.prototype);
+  prototype.constructor = C;
+  C.prototype = prototype;
+
+  // C.prototype = Object.create(P.prototype);
+  // C.prototype.constructor = C;
+}

@@ -160,3 +160,33 @@ function she(arr) {
   console.log("arr", arr);
 }
 she([1, 3, 2, 4, 5]);
+
+function insert11(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let temp = arr[i];
+    let j = i;
+    while (j > 1 && arr[j - 1] > arr[j]) {
+      arr[j] = arr[j - 1];
+      j--;
+    }
+    arr[j] = temp;
+  }
+  return arr;
+}
+// console.log("insert11([1,4,2,3])", insert11([1, 4, 2, 3]));
+
+function shell1(arr) {
+  for (let i = Math.floor(arr.length / 2); i > 0; i = Math.floor(i / 2)) {
+    for (let j = i; j < arr.length; j++) {
+      let temp = arr[j];
+      let k = j;
+      while (k > i && arr[k - i] > arr[k]) {
+        arr[k] = arr[k - i];
+        k -= i;
+      }
+      arr[k] = temp;
+    }
+  }
+  return arr;
+}
+console.log("shell1([1,4,2,3])", shell1([1, 4, 2, 3]));

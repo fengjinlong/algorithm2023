@@ -18,6 +18,16 @@ function createImg2(url) {
     };
   });
 }
+function createImg(url) {
+  return new Promise((resolve, reject) => {
+    if (!url) reject("");
+    const img = new Image();
+    img.src = url;
+    img.onload = function () {
+      resolve(img);
+    };
+  });
+}
 
 const request = (url) => url + ":" + Math.random();
 const cacheRequestFn = () => {

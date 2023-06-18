@@ -83,6 +83,11 @@ function flatten(arr) {
     return prev.concat(Array.isArray(next) ? flatten(next) : next);
   }, []);
 }
+function flatten3(arr) {
+  return arr.reduce((prev, next) => {
+    return prev.concat(Array.isArray(next) ? flatten(next) : next);
+  }, []);
+}
 function flatten2(arr) {
   while (arr.some((item) => Array.isArray(item))) {
     arr = [].concat(...arr);
@@ -90,3 +95,11 @@ function flatten2(arr) {
   return arr;
 }
 arr.toString().split(",");
+
+function ff1(arr) {
+  return arr.reduce((p, n) => {
+    while (arr.some((item) => Array.isArray(item))) {
+      arr = [].concat(...arr);
+    }
+  });
+}

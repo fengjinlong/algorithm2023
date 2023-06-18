@@ -169,3 +169,22 @@ function ct(arr) {
   }
   return tree;
 }
+
+function setTree(arr) {
+  let tree = new Node(arr[0]);
+  let nodes = [tree];
+  let i = 1;
+  for (const node of nodes) {
+    let n = new Node(arr[i]);
+    node.left = n;
+    nodes.push(n);
+    i++;
+    if (i === arr.length) break;
+    let n1 = new Node(arr[i]);
+    node.right = n1;
+    nodes.push(n1);
+    i++;
+    if (i === arr.length) break;
+  }
+  return tree;
+}

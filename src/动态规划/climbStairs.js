@@ -6,12 +6,27 @@ function climbStairs(n) {
   if (n <= 2) return n;
   return climbStairs(n - 1) + climbStairs(n - 2);
 }
+function cs(n) {
+  if (n <= 2) return n;
+  return cs(n - 1) + cs(n - 2);
+}
 function c(n) {
   if (n <= 2) return n;
   return c(n - 1) + c(n - 2);
 }
 // 动态规划解法
 function climbStairs2(n) {
+  if (n <= 2) return n;
+  let prev = 1;
+  let curr = 2;
+  for (let i = 3; i <= n; i++) {
+    const sum = prev + curr;
+    prev = curr;
+    curr = sum;
+  }
+  return curr;
+}
+function cc(n) {
   if (n <= 2) return n;
   let prev = 1;
   let curr = 2;

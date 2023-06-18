@@ -24,3 +24,10 @@ function f3(arr) {
   }
   return arr;
 }
+
+function fn(arr) {
+  while (arr.some((ele) => Array.isArray(ele))) {
+    arr = arr.flat();
+  }
+  return arr;
+}

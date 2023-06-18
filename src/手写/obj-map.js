@@ -80,3 +80,31 @@ function toMap1(arr) {
   return map;
 }
 toMap1(treeData);
+
+function fff(arr) {
+  const res = [];
+  function add(ele, pId, childrenIds = []) {
+    const obj = {
+      title: ele.title,
+      parentId: pId,
+      childrenIds,
+    };
+    res.push(obj);
+  }
+  // for (const ele of arr) {
+  //   fn(ele, null);
+  // }
+  fn(arr[0], null);
+  function fn(ele, parentId) {
+    const { children, key } = ele;
+    if (children) {
+      const childrenIds = children.map((item) => item.key);
+      add(ele, key, childrenIds);
+      children.forEach((item) => fn(item, key));
+    } else {
+      add(ele, parentId);
+    }
+  }
+  return res;
+}
+console.log("fff(treeData)", fff(treeData));

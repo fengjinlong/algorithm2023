@@ -11,12 +11,12 @@ const cy = (fn, ...args) => {
     return s;
   }
 };
-const f = (a, b, c) => a + b + c;
-const f1 = (a, b, c) => console.log(a, b, c);
-const fn2 = cy(f);
-fn2(1);
-fn2(2);
-fn2(3)(2)(3);
+// const f = (a, b, c) => a + b + c;
+// const f1 = (a, b, c) => console.log(a, b, c);
+// const fn2 = cy(f);
+// fn2(1);
+// fn2(2);
+// fn2(3)(2)(3);
 
 const cy1 = (fn, ...args) => {
   if (fn.length > args.length) {
@@ -43,3 +43,19 @@ const cy3 = (fn, ...args) => {
     return fn(...args);
   }
 };
+
+const cy4 = (fn, ...args) => {
+  if (fn.length > args.length) {
+    return function () {
+      return cy4(fn, ...args, ...arguments);
+    };
+  } else {
+    return fn(...args);
+  }
+};
+const f1 = (a, b, c) => console.log(a, b, c);
+const fn2 = cy4(f1);
+fn2(1);
+fn2(2);
+fn2(5, 3);
+fn2(3)(2)(3);
