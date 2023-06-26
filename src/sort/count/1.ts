@@ -30,10 +30,5 @@ function sort1(arr1, site) {
 }
 // 比较 4 位
 // 10 100 1000
-function sort2(arr1, site) {
-  for (let i = 0; i < site; i++) {
-    
-    
-  }
-}
+
 console.log("arr", sort1([21, 15, 14, 12, 13], 10));

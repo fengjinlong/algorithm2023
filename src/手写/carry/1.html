@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 注意  这里没有 执行标记  括号  或者 参数个数的 边界
+      function add(n) {
+        let sum = n;
+        const proxy = new Proxy(function a() {}, {
+          get(obj, key) {
+            console.log(sum);
+            return () => console.log(sum);
+          },
+          apply(receiver, ...args) {
+            sum += args[1][0];
+            return proxy;
+          },
+        });
+        return proxy;
+      }
+      // add(10)(10) == 1;
+
+      function fn() {
+        let a = [...arguments];
+        return function f() {
+          f.valueOf = function () {
+            let val = a.reduce((a, b) => a * b);
+            console.log(val);
+          };
+          if (arguments.length !== 0) {
+            a.push(...arguments);
+            return f;
+          }
+        };
+      }
+      fn(4)(5) == 1;
+    </script>
+  </body>
+</html>

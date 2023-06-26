@@ -31,3 +31,19 @@ function shell(arr) {
   return arr;
 }
 console.log("shell(arr)", shell(arr));
+
+function shell2(arr) {
+  for (let i = Math.floor(arr.length / 2); i > 0; i = Math.floor(i / 2)) {
+    for (let j = i; j < arr.length; j++) {
+      let temp = arr[j];
+      let k = j;
+      while (k > i && arr[k - i] > arr[k]) {
+        arr[k] = arr[k - i];
+        k -= i;
+      }
+      arr[k] = temp;
+    }
+  }
+  return arr;
+}
+console.log("shell2([1,4,2,3])", shell2([1, 4, 2, 3]));
