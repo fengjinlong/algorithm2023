@@ -56,3 +56,9 @@ function _new(Fn, args) {
   let r = Fn.call(obj, args);
   return r instanceof Object ? r : obj;
 }
+
+function _new(_Fun, args) {
+  const o = Object.create(_Fun.prototype);
+  const r = _Fun.call(o, args);
+  return r instanceof Object ? r : o;
+}
